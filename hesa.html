@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hesanime.Id UI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      /* Glass Effect for Category Filters */
+      .glass {
+        backdrop-filter: blur(5px); /* Reduced for better performance */
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-radius: 30px;
+      }
+
+      /* Gradient Circle Background */
+      .background-gradient {
+        background: radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 99, 71, 0.4),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(60, 179, 113, 0.4),
+            transparent 30%
+          ),
+          radial-gradient(
+            circle at 50% 80%,
+            rgba(70, 130, 180, 0.4),
+            transparent 20%
+          );
+
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Shadow for Cards */
+      .card-shadow {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Reusable Gradient Overlay */
+      .gradient-overlay {
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+      }
+
+      /* Responsive Optimization */
+      @media (max-width: 640px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .w-full,
+        .h-64 {
+          height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body class="background-gradient bg-gray-900 text-white">
+    <div class="w-full max-w-7xl mx-auto px-4 glass">
+      <!-- Navbar -->
+      <div
+        class="w-full flex justify-between items-center px-8 py-4 glass mt-6"
+      >
+        <!-- Logo -->
+        <h1 class="text-white text-2xl font-bold">
+          Gas<span class="text-orange-400">nime</span
+          ><span class="text-yellow-400">.id</span>
+        </h1>
+
+        <!-- Navigation -->
+        <div
+          class="flex items-center space-x-8 bg-gray-900 px-6 py-2 rounded-full text-white"
+        >
+          <button class="text-white font-medium focus:outline-none">
+            Voice
+          </button>
+          <button class="text-gray-400 font-medium focus:outline-none">
+            Anime
+          </button>
+          <button class="text-gray-400 font-medium focus:outline-none">
+            Manga
+          </button>
+          <!-- Search Icon -->
+          <button class="text-white">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <!-- Profile & Notifications -->
+        <div class="flex items-center space-x-4">
+          <!-- Notification Bell -->
+          <div class="relative">
+            <i class="fas fa-bell text-gray-300 text-xl"></i>
+            <!-- Notification Count -->
+            <span
+              class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
+              >8</span
+            >
+          </div>
+
+          <!-- User Profile -->
+          <div class="flex items-center space-x-2">
+            <img
+              src="https://cdn.myanimelist.net/images/about_me/ranking_items/8834982-1ede2123-836e-4058-a797-e3f4be98da72.jpg?t=1708227630"
+              alt="Profile Picture"
+              class="w-10 h-10 rounded-full object-cover border border-slate-950"
+            />
+            <div class="text-white text-sm">
+              <p class="font-semibold">Hesa H</p>
+              <p class="text-slate-800">Premium</p>
+            </div>
+            <i class="fas fa-chevron-down text-gray-200"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="grid grid-cols-2 gap-6 px-4 py-8">
+        <!-- Card 1: Ryomen Sukuna -->
+        <div
+          class="relative glass card-shadow rounded-3xl overflow-hidden w-full h-64"
+        >
+          <!-- Background Image -->
+          <img
+            src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/06/ryomen-sukuna.jpg"
+            alt="Ryomen Sukuna"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <!-- Gradient Overlay -->
+          <div class="gradient-overlay absolute inset-0"></div>
+          <!-- Text Content -->
+          <div
+            class="relative p-6 text-white z-10 flex flex-col justify-between h-full"
+          >
+            <h2 class="text-3xl font-bold mb-4">Ryomen Sukuna</h2>
+            <!-- Sinopsis -->
+            <p class="text-sm mb-4">
+              Dalam dunia Jujutsu, Yuji Itadori terjebak dalam pertempuran
+              antara penyihir Jujutsu dan kutukan berbahaya. Dia bertarung untuk
+              menyelamatkan umat manusia dari ancaman kegelapan.
+            </p>
+            <!-- Button -->
+            <button
+              id="playButton"
+              class="flex items-center space-x-2 px-6 py-2 bg-blue-600 hover:bg-blue-700 button-hover transition rounded-full self-start"
+            >
+              <i class="fas fa-play"></i>
+              <span>Play</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Kento Nanami -->
+        <div
+          class="relative glass card-shadow rounded-3xl overflow-hidden w-full h-64"
+        >
+          <!-- Background Image -->
+          <img
+            src="https://c4.wallpaperflare.com/wallpaper/985/379/753/jujutsu-kaisen-kento-nanami-tie-goggles-glasses-hd-wallpaper-preview.jpg"
+            alt="Kento Nanami"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <!-- Gradient Overlay -->
+          <div class="gradient-overlay absolute inset-0"></div>
+          <!-- Text Content -->
+          <div
+            class="relative p-6 text-white z-10 flex flex-col justify-between h-full"
+          >
+            <h2 class="text-3xl font-bold mb-4">Kento Nanami</h2>
+            <!-- Sinopsis -->
+            <p class="text-sm mb-4">
+                Kento Nanami (七なな海み建けん人と Nanami Kento?) is a major supporting character in Jujutsu Kaisen. He was a former student of Tokyo Jujutsu High where he was an underclassman of Satoru Gojo and Suguru Geto. Nanami initially left Jujutsu High after graduating to become a salaryman, but returned four years later to continue working as a jujutsu sorcerer.
+            </p>
+            <!-- Button -->
+            <button
+              id="playButton2"
+              class="flex items-center space-x-2 px-6 py-2 bg-blue-600 hover:bg-blue-700 button-hover transition rounded-full self-start"
+            >
+              <i class="fas fa-play"></i>
+              <span>Play</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filters with Scroll on small screens -->
+      <style>
+        /* Efek hover untuk button "Trending" */
+        .btn-trending {
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .btn-trending::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 100%;
+          background-color: #ff7849; /* Warna oranye dari text-orange-400 */
+          transition: width 0.4s ease;
+          z-index: 0;
+        }
+
+        .btn-trending:hover::before {
+          width: 100%;
+        }
+
+        .btn-trending:hover span,
+        .btn-trending:hover i {
+          color: #fff;
+          z-index: 1;
+          position: relative;
+        }
+
+        /* Efek hover untuk button "Action" */
+        .btn-action {
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .btn-action::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 100%;
+          background-color: #fc8181; /* Warna merah dari text-red-400 */
+          transition: width 0.4s ease;
+          z-index: 0;
+        }
+
+        .btn-action:hover::before {
+          width: 100%;
+        }
+
+        .btn-action:hover span,
+        .btn-action:hover i {
+          color: #fff;
+          z-index: 1;
+          position: relative;
+        }
+
+        /* Efek hover untuk button "Romance" */
+        .btn-romance {
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .btn-romance::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 100%;
+          background-color: #f687b3; /* Warna pink dari text-pink-400 */
+          transition: width 0.4s ease;
+          z-index: 0;
+        }
+
+        .btn-romance:hover::before {
+          width: 100%;
+        }
+
+        .btn-romance:hover span,
+        .btn-romance:hover i {
+          color: #fff;
+          z-index: 1;
+          position: relative;
+        }
+
+        /* Efek hover untuk button "Animation" */
+        .btn-animation {
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .btn-animation::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 100%;
+          background-color: #ecc94b; /* Warna kuning dari text-yellow-400 */
+          transition: width 0.4s ease;
+          z-index: 0;
+        }
+
+        .btn-animation:hover::before {
+          width: 100%;
+        }
+
+        .btn-animation:hover span,
+        .btn-animation:hover i {
+          color: #fff;
+          z-index: 1;
+          position: relative;
+        }
+
+        /* Efek hover untuk button "Horror" */
+        .btn-horror {
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .btn-horror::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 100%;
+          background-color: #9f7aea; /* Warna ungu dari text-purple-400 */
+          transition: width 0.4s ease;
+          z-index: 0;
+        }
+
+        .btn-horror:hover::before {
+          width: 100%;
+        }
+
+        .btn-horror:hover span,
+        .btn-horror:hover i {
+          color: #fff;
+          z-index: 1;
+          position: relative;
+        }
+
+        /* Efek hover untuk button "Special" */
+        .btn-special {
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .btn-special::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 100%;
+          background-color: #63b3ed; /* Warna biru dari text-blue-400 */
+          transition: width 0.4s ease;
+          z-index: 0;
+        }
+
+        .btn-special:hover::before {
+          width: 100%;
+        }
+
+        .btn-special:hover span,
+        .btn-special:hover i {
+          color: #fff;
+          z-index: 1;
+          position: relative;
+        }
+
+        /* Efek hover untuk button "Drakor" */
+        .btn-drakor {
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .btn-drakor::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 100%;
+          background-color: #48bb78; /* Warna hijau dari text-green-400 */
+          transition: width 0.4s ease;
+          z-index: 0;
+        }
+
+        .btn-drakor:hover::before {
+          width: 100%;
+        }
+
+        .btn-drakor:hover span,
+        .btn-drakor:hover i {
+          color: #fff;
+          z-index: 1;
+          position: relative;
+        }
+      </style>
+
+      <!-- Button Group with hover effect -->
+      <div class="w-full max-w-7xl mx-auto px-4">
+        <div
+          class="flex gap-5 justify-between overflow-x-auto no-scrollbar p-4"
+        >
+          <button
+            class="glass btn-trending px-8 py-4 flex-1 rounded-full text-white flex items-center justify-center space-x-2"
+          >
+            <i class="fas fa-fire text-orange-400 text-xl"></i>
+            <span>Trending</span>
+          </button>
+          <button
+            class="glass btn-action px-8 py-4 flex-1 rounded-full text-white flex items-center justify-center space-x-2"
+          >
+            <i class="fas fa-bolt text-red-400 text-xl"></i>
+            <span>Action</span>
+          </button>
+          <button
+            class="glass btn-romance px-8 py-4 flex-1 rounded-full text-white flex items-center justify-center space-x-2"
+          >
+            <i class="fas fa-heart text-pink-400 text-xl"></i>
+            <span>Romance</span>
+          </button>
+          <button
+            class="glass btn-animation px-8 py-4 flex-1 rounded-full text-white flex items-center justify-center space-x-2"
+          >
+            <i class="fas fa-film text-yellow-400 text-xl"></i>
+            <span>Animation</span>
+          </button>
+          <button
+            class="glass btn-horror px-8 py-4 flex-1 rounded-full text-white flex items-center justify-center space-x-2"
+          >
+            <i class="fas fa-ghost text-purple-400 text-xl"></i>
+            <span>Horror</span>
+          </button>
+          <button
+            class="glass btn-special px-8 py-4 flex-1 rounded-full text-white flex items-center justify-center space-x-2"
+          >
+            <i class="fas fa-star text-blue-400 text-xl"></i>
+            <span>Special</span>
+          </button>
+          <button
+            class="glass btn-drakor px-8 py-4 flex-1 rounded-full text-white flex items-center justify-center space-x-2"
+          >
+            <i class="fas fa-dragon text-green-400 text-xl"></i>
+            <span>Drakor</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Trending Anime Cards Section -->
+      <div class="w-full max-w-7xl mx-auto px-4 py-6 relative">
+        <!-- Title and Icons -->
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-white text-3xl font-semibold">Trending Voice</h3>
+          <div class="flex items-center space-x-2 glass px-4 py-1">
+            <!-- Filter Icon -->
+            <button class="icon-glass">
+              <i class="fas fa-sliders-h text-white text-xl"></i>
+            </button>
+            <div class="divider"></div>
+            <button class="icon-glass">
+              <!-- Sort Icon -->
+              <i class="fas fa-filter text-white text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="glass rounded-3xl w-48 relative overflow-hidden group">
+            <!-- Gambar dengan Fade Effect -->
+            <div class="relative">
+              <img
+                src="https://i.pinimg.com/736x/a7/57/66/a757664e6a2cf75981f57303bb182324.jpg"
+                alt="Kyoraku Shunsui"
+                class="w-full h-48 object-cover"
+              />
+              <!-- Overlay dengan efek gradien -->
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"
+              ></div>
+
+              <!-- Play Button Overlay (Initially Hidden) -->
+              <button
+              id="playBtn1"
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style="background-color: rgba(0, 0, 0, 0.6)"
+              >
+                <i class="fas fa-play text-white text-3xl"></i>
+              </button>
+            </div>
+
+            <!-- Keterangan di bawah gambar -->
+            <div class="p-4">
+              <h4 class="font-semibold text-white text-lg mb-2">
+                Kyoraku Shunsui
+              </h4>
+              <div class="flex items-center text-sm text-gray-400 space-x-2">
+                <i class="fas fa-star text-orange-400"></i>
+                <span>7.8</span>
+                <span>|</span>
+                <span>2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass rounded-3xl w-48 relative overflow-hidden group">
+            <div class="relative">
+              <img
+                src="https://i.pinimg.com/originals/9b/b6/0b/9bb60b6be07a8713728cead2287937d8.jpg"
+                alt="Food Wars"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"
+              ></div>
+
+              <!-- Play Button Overlay (Initially Hidden) -->
+              <button
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style="background-color: rgba(0, 0, 0, 0.6)"
+              >
+                <i class="fas fa-play text-white text-3xl"></i>
+              </button>
+            </div>
+
+            <div class="p-4">
+              <h4 class="font-semibold text-white text-lg mb-2">Food Wars</h4>
+              <div class="flex items-center text-sm text-gray-400 space-x-2">
+                <i class="fas fa-star text-orange-400"></i>
+                <span>6.0</span>
+                <span>|</span>
+                <span>2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass rounded-3xl w-48 relative overflow-hidden group">
+            <div class="relative">
+              <img
+                src="https://i.pinimg.com/736x/f7/e6/48/f7e648c179bbf7df8e0f6c7335ad2d6b.jpg"
+                alt="Blue Lock"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"
+              ></div>
+
+              <!-- Play Button Overlay (Initially Hidden) -->
+              <button
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style="background-color: rgba(0, 0, 0, 0.6)"
+              >
+                <i class="fas fa-play text-white text-3xl"></i>
+              </button>
+            </div>
+
+            <div class="p-4">
+              <h4 class="font-semibold text-white text-lg mb-2">Blue Lock</h4>
+              <div class="flex items-center text-sm text-gray-400 space-x-2">
+                <i class="fas fa-star text-orange-400"></i>
+                <span>7.1</span>
+                <span>|</span>
+                <span>2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="glass rounded-3xl w-48 relative overflow-hidden group">
+            <div class="relative">
+              <img
+                src="https://cdn.oneesports.gg/cdn-data/2023/04/Anime_DemonSlayer_Muzan_3-1024x576.jpg"
+                alt="Demon Slayer"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"
+              ></div>
+
+              <!-- Play Button Overlay (Initially Hidden) -->
+              <button
+                id="playBtn4"
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style="background-color: rgba(0, 0, 0, 0.6)"
+              >
+                <i class="fas fa-play text-white text-3xl"></i>
+              </button>
+            </div>
+
+            <div class="p-4">
+              <h4 class="font-semibold text-white text-lg mb-2">
+                Demon Slayer
+              </h4>
+              <div class="flex items-center text-sm text-gray-400 space-x-2">
+                <i class="fas fa-star text-orange-400"></i>
+                <span>7.8</span>
+                <span>|</span>
+                <span>2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="glass rounded-3xl w-48 relative overflow-hidden group">
+            <div class="relative">
+              <img
+                src="https://i0.wp.com/www.bgeekyblog.com/wp-content/uploads/2016/06/l_fancel_from_death_note_by_escaf.jpg"
+                alt="Death Notes"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"
+              ></div>
+
+              <!-- Play Button Overlay (Initially Hidden) -->
+              <button
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style="background-color: rgba(0, 0, 0, 0.6)"
+              >
+                <i class="fas fa-play text-white text-3xl"></i>
+              </button>
+            </div>
+
+            <div class="p-4">
+              <h4 class="font-semibold text-white text-lg mb-2">Death Notes</h4>
+              <div class="flex items-center text-sm text-gray-400 space-x-2">
+                <i class="fas fa-star text-orange-400"></i>
+                <span>6.1</span>
+                <span>|</span>
+                <span>2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="glass rounded-3xl w-48 relative overflow-hidden group">
+            <div class="relative">
+              <img
+                src="https://i.pinimg.com/originals/1a/5b/3e/1a5b3e761a2ad1079df22e1b39ca972a.jpg"
+                alt="Tensei Shittara"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"
+              ></div>
+
+              <!-- Play Button Overlay (Initially Hidden) -->
+              <button
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style="background-color: rgba(0, 0, 0, 0.6)"
+              >
+                <i class="fas fa-play text-white text-3xl"></i>
+              </button>
+            </div>
+
+            <div class="p-4">
+              <h4 class="font-semibold text-white text-lg mb-2">
+                Tensei Shittara
+              </h4>
+              <div class="flex items-center text-sm text-gray-400 space-x-2">
+                <i class="fas fa-star text-orange-400"></i>
+                <span>6.5</span>
+                <span>|</span>
+                <span>2022</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      /* Aura effect */
+      #aura {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.699); /* Warna api (orange-red) */
+        opacity: 0;
+        z-index: 50;
+        pointer-events: none; /* Supaya tidak mengganggu interaksi */
+      }
+
+      /* Animasi smooth */
+      @keyframes auraAnimation {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes auraAnimation2 {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* CSS untuk aura efek muncul smooth */
+      .show-aura {
+        animation: auraAnimation 1.5s ease-out forwards;
+      }
+      .show-aura-long {
+        animation: auraAnimation2 3s ease-out forwards;
+      }
+    </style>
+    <!-- Aura background -->
+    <div id="aura"></div>
+
+    <!-- JavaScript untuk memutar suara dan memunculkan aura -->
+    <script>
+      const playButton = document.getElementById("playButton");
+      const aura = document.getElementById("aura");
+
+      // URL dari file suara Ryomen Sukuna
+      const soundUrl =
+        "https://www.myinstants.com/media/sounds/sukunas-ryoiki-tenkai.mp3";
+
+      // Fungsi untuk memutar suara Ryomen Sukuna dan memunculkan aura
+      playButton.addEventListener("click", () => {
+        const audio = new Audio(soundUrl);
+        audio.play();
+
+        // Memunculkan aura dengan animasi
+        aura.classList.add("show-aura");
+
+        // Menghilangkan aura setelah animasi selesai (1.5 detik)
+        setTimeout(() => {
+          aura.classList.remove("show-aura");
+        }, 1500);
+      });
+
+      const playButton2 = document.getElementById("playButton2");
+
+      // URL dari file suara Kento Nananmi
+      const shunsuiSoundUrl =
+        "https://www.myinstants.com/media/sounds/ato-wa-tanomimasu.mp3";
+
+      // Fungsi untuk memutar suara Kento Nananmi dan memunculkan aura
+      playButton2.addEventListener("click", () => {
+        const audio = new Audio(shunsuiSoundUrl);
+        audio.play();
+
+        // Memunculkan aura dengan animasi
+        aura.classList.add("show-aura");
+
+        // Menghilangkan aura setelah animasi selesai (1.5 detik)
+        setTimeout(() => {
+          aura.classList.remove("show-aura");
+        }, 3000);
+      });
+
+      const playBtn1 = document.getElementById("playBtn1");
+
+      // URL dari file suara Kyouko
+      const kyoukoSoundUrl =
+        "https://www.myinstants.com/media/sounds/shunsui-bankai.mp3";
+
+      // Fungsi untuk memutar suara Kyouko dan memunculkan aura 
+      playBtn1.addEventListener("click", () => {
+        const audio = new Audio(kyoukoSoundUrl);
+        audio.play();
+
+        // Memunculkan aura dengan animasi
+        aura.classList.add("show-aura-long");
+
+        // Menghilangkan aura setelah animasi selesai (1.5 detik)
+        setTimeout(() => {
+          aura.classList.remove("show-aura-long");
+        }, 11000);
+        })
+
+        const playBtn4 = document.getElementById("playBtn4");
+
+      // URL dari file suara Muzan
+      const demonSoundUrl = 
+        "https://www.myinstants.com/media/sounds/muzan-voice-pt-2.mp3";
+
+      // Fungsi untuk memutar suara Muzan dan memunculkan aura
+      playBtn4.addEventListener("click", () => {
+        const audio = new Audio(demonSoundUrl);
+        audio.play();
+
+        // Memunculkan aura dengan animasi
+        aura.classList.add("show-aura-long");
+
+        // Menghilangkan aura setelah animasi selesai (1.5 detik)
+        setTimeout(() => {
+          aura.classList.remove("show-aura-long");
+        } , 7000);
+      })
+    </script>
+  </body>
+</html>
